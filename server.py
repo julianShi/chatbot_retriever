@@ -18,10 +18,6 @@ class S(BaseHTTPRequestHandler):
 	def do_GET(self):
 		self._set_headers()
 		parsed_path = urlparse.urlparse(self.path)
-		data_string = self.rfile.read(int(self.headers['Content-Length']))
-		print("============")
-		print(data_string)
-		print("============")
 		request_id = parsed_path.path[1:]
 		# response = subprocess.check_output(["python", request_id+'.py'])
 		# self.wfile.write(json.dumps(response))
