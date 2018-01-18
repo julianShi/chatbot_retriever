@@ -15,14 +15,20 @@ class ChatbotGet:
 		for building in buildings_dict:
 			if (building["abbreviation"] == building_abbreviation.upper()):
 				message_json={
-				 "messages": [
-					 {"text": building["building"]},
-					 {"text": building["address"]}
-				 ]
+					"messages": [
+						{"text": building["building"]},
+						{"text": building["address"]}
+					],
+					"attachment": {
+						"type": "image",
+						"payload": {
+							"url": "http://54.250.196.77/UT_Buildings/"+building_abbreviation.upper()+".jpg"
+						}
+					}
 				}
 				break
 		return message_json
-		
+
 	def return_message(self,request_id):
 		request_message=request_id.split('/')
 		script=request_message[0]
